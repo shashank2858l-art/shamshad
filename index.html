@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio, resume and bio-data website of Shamshad Begum">
+  <title>Shamshad Begum | Portfolio</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+:root{--ink:#142421;--muted:#5e7570;--blue:#0d9488;--blue-dark:#0f766e;--pale:#f0fdfa;--line:#e0ede9;--white:#fff;--mint:#5eead4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;background:#fff}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,90%);margin:0 auto}
+.header{height:78px;background:#fff;border-bottom:1px solid #e7f0ee;display:flex;align-items:center;position:sticky;top:0;z-index:20}
+.nav-container{display:flex;align-items:center;justify-content:space-between}
+.brand{font:800 18px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.5px;display:flex;align-items:center;gap:7px}
+.brand-mark{width:32px;height:32px;border-radius:10px;background:var(--blue);color:white;display:grid;place-items:center;font-size:15px;margin-right:3px}
+.brand-accent{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-links a{padding:9px 17px;border-radius:8px;color:#536b66;font-weight:600;font-size:14px;transition:.2s}
+.nav-links a:hover,.nav-links a.current{background:#f0fdfa;color:var(--blue-dark)}
+.nav-toggle{display:none;border:0;background:none;font-size:25px;color:var(--ink);cursor:pointer}
+
+/* Hero Section */
+.hero{position:relative;overflow:hidden;background:#091a18;color:#fff;min-height:600px;padding:70px 0 35px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 35%,rgba(13,148,136,.28),transparent 45%),linear-gradient(135deg,#091a18 0%,#0e2420 50%,#153831 100%)}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(35px);pointer-events:none}
+.glow-one{width:320px;height:320px;background:rgba(45,212,191,.12);right:8%;top:70px}
+.glow-two{width:220px;height:220px;background:rgba(13,148,136,.14);right:25%;bottom:50px}
+.hero-layout{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:50px;min-height:460px}
+.hero-greeting{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(94,234,212,.25);border-radius:20px;color:#5eead4;font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:20px}
+.hero h1{font:800 clamp(40px,5.2vw,62px)/1.15 'Plus Jakarta Sans',sans-serif;letter-spacing:-1.5px;margin:0;color:#fff}
+.hero h1 span{color:#5eead4}
+.hero-description{max-width:480px;color:#cce7e2;font-size:15px;line-height:1.8;margin:18px 0 24px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;border-radius:10px;padding:12px 20px;font:700 13px 'Inter',sans-serif;cursor:pointer;transition:.2s}
+.button-primary{background:var(--blue);color:white;box-shadow:0 7px 20px rgba(13,148,136,.35)}
+.button-primary:hover{background:#14b8a6;transform:translateY(-2px)}
+.button-ghost{border:1px solid rgba(255,255,255,.3);color:#fff;background:rgba(255,255,255,.06)}
+.button-ghost:hover{background:rgba(255,255,255,.14)}
+.hero-tech-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero-tech-label{font-size:10px;font-weight:700;letter-spacing:1.2px;color:#7da59e;text-transform:uppercase}
+.tech-pill{padding:4px 10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:6px;color:#e2f4f0;font-size:11px;font-weight:600}
+
+/* Student Showcase Card (Centerpiece on Right) */
+.hero-art{position:relative;display:flex;justify-content:center;align-items:center;min-height:420px}
+.showcase-card{position:relative;z-index:2;width:320px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 22px 55px rgba(3,20,18,.45);border:1px solid rgba(255,255,255,.9)}
+.showcase-card-header{background:linear-gradient(135deg,#0d9488,#115e59);padding:22px 20px 38px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.showcase-card-header span{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#ccfbf1}
+.header-badge{background:rgba(255,255,255,.2);padding:3px 8px;border-radius:12px;font-size:9px;font-weight:700}
+.showcase-card-body{padding:0 22px 20px;margin-top:-30px;position:relative;z-index:3}
+.showcase-avatar-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
+.showcase-avatar{width:72px;height:72px;border-radius:20px;background:linear-gradient(145deg,#f0fdfa,#ccfbf1);border:4px solid #ffffff;display:grid;place-items:center;color:#0f766e;font:800 24px 'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 16px rgba(15,118,110,.2)}
+.student-status-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:#f0fdfa;border:1px solid #ccfbf1;border-radius:15px;color:#0f766e;font-size:10px;font-weight:700}
+.showcase-card h3{margin:0;font:800 19px 'Plus Jakarta Sans',sans-serif;color:var(--ink)}
+.showcase-card .student-role{display:block;font-size:12px;color:var(--muted);margin:3px 0 12px}
+.showcase-meta-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.meta-chip{font-size:10px;background:#f4fbf9;border:1px solid #dfede9;color:#4a6661;padding:4px 8px;border-radius:6px;font-weight:600}
+.showcase-info-list{background:#f8fdfc;border:1px solid #e3f0ed;border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:8px;margin-bottom:15px}
+.info-row{display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.info-row span{color:#73948e;font-weight:600;font-size:10px}
+.info-row strong{color:var(--ink);font-weight:700}
+.showcase-card-footer{border-top:1px solid #edf4f2;padding-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#63857f}
+.showcase-card-footer a{color:var(--blue);font-weight:700}
+
+/* Hero Bottom Strip */
+.hero-bottom-strip{position:relative;z-index:1;margin-top:35px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;color:#8dafa8;font-size:11px}
+.hero-nav-items{display:flex;gap:20px}
+.hero-nav-items a{color:#cce7e2;font-weight:600;transition:.2s}
+.hero-nav-items a:hover{color:#5eead4}
+
+/* Sections & Cards */
+.section{padding-top:92px;padding-bottom:95px}
+.section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:35px}
+.section-heading .eyebrow,.technology-section .eyebrow{margin:0 0 9px;color:var(--blue)}
+.section-heading h2,.technology-section h2{font:800 34px/1.2 'Plus Jakarta Sans',sans-serif;letter-spacing:-1px;margin:0}
+.section-heading h2 span,.technology-section h2 span{color:var(--blue)}
+.section-intro{max-width:350px;color:var(--muted);margin:0;font-size:13px}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.info-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;padding:27px 25px 25px;min-height:255px;background:#fff;transition:.25s}
+.info-card:hover{transform:translateY(-5px);box-shadow:0 17px 38px rgba(13,148,136,.12);border-color:#99f6e4}
+.card-icon{width:44px;height:44px;border-radius:12px;background:#f0fdfa;color:var(--blue);display:grid;place-items:center;font-size:22px}
+.card-number{position:absolute;right:25px;top:25px;color:#d1e3df;font:700 22px 'Plus Jakarta Sans',sans-serif}
+.card-label{font-size:9px;letter-spacing:1.5px;color:#789691;font-weight:700;margin:22px 0 4px}
+.info-card h3{font:800 20px 'Plus Jakarta Sans',sans-serif;margin:0 0 7px}
+.info-card>p:not(.card-label){color:var(--muted);font-size:12px;line-height:1.8;margin:0 0 17px}
+.arrow-link{font-size:12px;color:var(--blue);font-weight:700}
+.arrow-link span{margin-left:7px}
+.technology-section{background:#f4fbf9;padding:65px 0}
+.tech-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.technology-section h2{font-size:30px}
+.tech-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tech-list>div{background:#fff;border:1px solid #dfede9;border-radius:10px;padding:18px 15px}
+.tech-list b,.tech-list span,.tech-list small{display:block}
+.tech-list b{font-size:10px;color:#85a39e;margin-bottom:14px}
+.tech-list span{font:800 14px 'Plus Jakarta Sans',sans-serif}
+.tech-list small{font-size:10px;color:var(--muted);margin-top:3px}
+.footer{background:#071513;color:#8ba39f;padding:23px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.footer-brand{color:#fff;font-size:14px}.footer-brand .brand-accent{color:#5eead4}.footer-brand .brand-mark{display:none}
+.footer p{font-size:11px;margin:0}
+.back-top{font-size:11px;color:#b2d4cf}
+.page-banner{background:linear-gradient(115deg,#091a18,#14352f);padding:65px 0 60px;color:#fff}
+.page-banner .eyebrow{margin:0 0 12px}
+.page-banner h1{font:800 clamp(40px,5vw,56px)/1.1 'Plus Jakarta Sans',sans-serif;letter-spacing:-1.5px;margin:0}
+.page-banner h1 span{color:#99f6e4}
+.page-banner>div>p:not(.eyebrow){color:#cce7e2;margin:10px 0 20px}
+.print-button{padding:10px 16px;font-size:12px}
+.document-wrap{padding-top:55px;padding-bottom:80px}
+.resume-document{max-width:950px;margin:auto;border:1px solid var(--line);border-radius:14px;box-shadow:0 15px 50px rgba(13,148,136,.06);padding:45px 50px;background:#fff}
+.resume-heading{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:22px}
+.resume-heading .eyebrow{margin:0 0 5px;color:var(--blue)}
+.resume-heading h2{font:800 32px 'Plus Jakarta Sans',sans-serif;margin:0;letter-spacing:-1px}
+.resume-role{color:var(--muted);margin:3px 0 0;font-size:13px}
+.resume-monogram{width:68px;height:68px;border-radius:18px;background:#f0fdfa;color:var(--blue);display:grid;place-items:center;font:800 22px 'Plus Jakarta Sans',sans-serif}
+.contact-strip{display:flex;gap:20px;flex-wrap:wrap;padding:13px 0;border-bottom:1px solid var(--line);font-size:11px;color:#55706b}
+.resume-columns{display:grid;grid-template-columns:1.65fr .8fr;gap:35px;padding-top:14px}
+.doc-section{padding:16px 0;border-bottom:1px solid var(--line)}
+.doc-section h3{font:800 14px 'Plus Jakarta Sans',sans-serif;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.doc-section h3 span{font-size:10px;color:var(--blue);background:#f0fdfa;padding:5px 7px;border-radius:5px}
+.doc-section p{font-size:12px;color:#546e69;margin:5px 0;line-height:1.8}
+.doc-section h4{font:700 12px 'Plus Jakarta Sans',sans-serif;margin:0}
+.timeline-item{position:relative;padding:0 0 16px 20px;border-left:1px solid #d2e4e0;margin-left:5px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-dot{position:absolute;left:-5px;top:4px;width:9px;height:9px;background:var(--blue);border:2px solid white;border-radius:50%;box-shadow:0 0 0 1px var(--blue)}
+.timeline-item h4{font-size:12px}
+.timeline-item .institution{margin:1px 0;color:#55706b}
+.timeline-item .date-line{font-size:10px;color:#7c9994;margin:0}
+.timeline-item .date-line b{color:var(--blue);padding:0 4px}
+.strength-list{display:flex;gap:7px;flex-wrap:wrap}
+.strength-list span,.interest-tags span{font-size:10px;background:#f0fdfa;color:#0f766e;border-radius:5px;padding:6px 9px}
+.resume-side{background:#f6fbf9;border-radius:10px;padding:20px 18px;height:max-content}
+.side-section{padding-bottom:20px;margin-bottom:18px;border-bottom:1px solid #e0ede9}
+.side-section:last-child{border:0;margin:0;padding:0}
+.side-section h3,.bio-block h3{font:800 13px 'Plus Jakarta Sans',sans-serif;margin:0 0 15px}
+.skill-name{font-size:10px;font-weight:600;margin:12px 0 5px}
+.skill-track{height:5px;border-radius:5px;background:#deebe7;overflow:hidden}
+.skill-track i{height:100%;display:block;background:var(--blue);border-radius:5px}
+.skill-note{display:block;font-size:9px;color:#7c9994;margin-top:12px}
+.side-section ul{padding-left:16px;margin:0;color:#55706b;font-size:11px;line-height:2}
+.side-section>p:not(.skill-name){font-size:11px;color:#55706b}
+.resume-declaration{display:flex;justify-content:space-between;gap:20px;align-items:end;border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
+.resume-declaration h3{font:800 13px 'Plus Jakarta Sans',sans-serif;margin:0 0 5px}
+.resume-declaration p{font-size:11px;color:#55706b;margin:0}
+.sign-name{font:700 13px 'Plus Jakarta Sans',sans-serif;text-align:center;min-width:115px}
+.sign-name small{display:block;font:400 9px 'Inter',sans-serif;color:#7c9994}
+.bio-layout{display:grid;grid-template-columns:285px 1fr;gap:35px;padding-top:55px;padding-bottom:80px;align-items:start}
+.bio-sidebar{background:#0d211e;color:#fff;border-radius:16px;padding:30px 25px;box-shadow:0 15px 35px rgba(5,25,22,.22)}
+.bio-avatar{width:100px;height:100px;border-radius:26px;margin:0 auto 15px;display:grid;place-items:center;background:linear-gradient(145deg,#ccfbf1,#99f6e4);border:4px solid rgba(255,255,255,.2);color:#0f766e;font:800 26px 'Plus Jakarta Sans',sans-serif}
+.bio-sidebar h2{text-align:center;font:800 20px 'Plus Jakarta Sans',sans-serif;margin:0}
+.bio-role{text-align:center;color:#96b5af;font-size:11px;margin:3px 0 22px}
+.bio-side-line{height:1px;background:rgba(255,255,255,.12);margin:20px 0}
+.side-caption{font-size:9px;letter-spacing:1.5px;color:#5eead4;font-weight:700;margin:0 0 14px}
+.contact-item{font-size:11px;color:#cce7e2;margin:12px 0;overflow-wrap:anywhere}
+.contact-item b{display:block;font-size:8px;letter-spacing:1.3px;color:#789e97;margin-bottom:3px}
+.interest-tags{display:flex;gap:6px;flex-wrap:wrap}
+.interest-tags span{background:rgba(255,255,255,.08);color:#ccfbf1;border:1px solid rgba(255,255,255,.15)}
+.bio-details{border:1px solid var(--line);border-radius:16px;padding:30px 35px}
+.bio-block{padding:0 0 25px;margin-bottom:25px;border-bottom:1px solid var(--line)}
+.bio-block:last-child{border:0;margin:0;padding:0}
+.bio-block .eyebrow{margin:0 0 7px;color:var(--blue)}
+.bio-block>h2{font:800 25px 'Plus Jakarta Sans',sans-serif;margin:0 0 10px}
+.bio-block>h2 span{color:var(--blue)}
+.bio-intro,.bio-block>p:not(.eyebrow){font-size:12px;color:#55706b;line-height:1.9;margin:0}
+.bio-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 25px}
+.bio-field{padding:13px 0;border-bottom:1px solid #e7f0ee;display:flex;flex-direction:column;gap:4px}
+.bio-field small{font-size:8px;letter-spacing:1.2px;color:#7c9c96;font-weight:700}
+.bio-field strong{font-size:12px;font-weight:600;overflow-wrap:anywhere}
+.bio-field.wide{grid-column:1/-1}
+.education-highlight{display:flex;align-items:center;gap:13px;background:#f0fdfa;border-radius:10px;padding:14px}
+.education-icon{width:37px;height:37px;border-radius:10px;background:#ccfbf1;color:var(--blue);display:grid;place-items:center;font-size:18px}
+.education-highlight strong{font:700 12px 'Plus Jakarta Sans',sans-serif}
+.education-highlight p,.education-note{font-size:10px;color:#678680;margin:3px 0 0}
+.education-note{margin-top:10px;font-size:11px}
+.bio-signature{display:flex;justify-content:space-between;align-items:end;margin-top:20px;font-size:10px;color:#678680}
+.bio-signature strong{text-align:center;color:var(--ink);font:700 12px 'Plus Jakarta Sans',sans-serif}
+.bio-signature small{display:block;color:#7c9c96;font:400 9px 'Inter',sans-serif}
+@media(max-width:800px){
+ .hero-layout{grid-template-columns:1fr;gap:35px}.hero{padding-top:55px}.hero-art{min-height:auto}
+ .section-heading{display:block}.section-intro{margin-top:12px}.cards-grid{grid-template-columns:1fr 1fr}
+ .tech-layout{grid-template-columns:1fr;gap:25px}.bio-layout{grid-template-columns:1fr}.bio-sidebar{max-width:none}
+}
+@media(max-width:600px){
+ .header{height:68px}.nav-toggle{display:block}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:white;padding:12px 5%;border-bottom:1px solid var(--line);box-shadow:0 10px 20px rgba(5,25,22,.08);flex-direction:column;align-items:stretch}
+ .nav-links.open{display:flex}.nav-links a{padding:12px}
+ .hero{padding-top:45px;min-height:auto}.hero h1{font-size:38px;letter-spacing:-1px}.showcase-card{width:100%;max-width:320px}
+ .hero-bottom-strip{flex-direction:column;align-items:flex-start;gap:12px}
+ .section{padding-top:65px;padding-bottom:65px}.section-heading h2,.technology-section h2{font-size:28px}
+ .cards-grid{grid-template-columns:1fr}.tech-list{grid-template-columns:1fr}.tech-list>div{display:grid;grid-template-columns:35px 1fr;align-items:center}.tech-list b{grid-row:span 2;margin:0}.tech-list small{margin:0}
+ .footer-inner{flex-direction:column;align-items:flex-start}.page-banner{padding:48px 0}.document-wrap{padding-top:30px}.resume-document{padding:25px 18px}.resume-columns{grid-template-columns:1fr;gap:15px}.contact-strip{gap:8px 15px}.resume-declaration{align-items:start;flex-direction:column}.bio-layout{padding-top:30px}.bio-details{padding:23px 18px}.bio-grid{grid-template-columns:1fr}.bio-field.wide{grid-column:auto}
+}
+@media print{
+ .header,.footer,.print-button,.nav-toggle{display:none!important}
+ body{background:white;color:#111}.page-banner{background:white;color:#111;padding:0 0 20px}.page-banner h1{color:#111;font-size:28px}.page-banner h1 span{color:#333}.page-banner>div>p:not(.eyebrow){color:#555}
+ .document-wrap,.bio-layout{padding:0;width:100%}.resume-document,.bio-details{box-shadow:none;border:0;padding:0}.resume-side,.bio-sidebar{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .bio-layout{grid-template-columns:230px 1fr;gap:18px}.bio-sidebar{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="container nav-container">
+    <a class="brand" href="index.html"><span class="brand-mark">S</span> Personal<span class="brand-accent">Portfolio</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a class="current" href="index.html">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="biodata.html">Bio-data</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+    <div class="container hero-layout">
+      <div class="hero-copy">
+        <div class="hero-greeting">👋 Welcome to my portfolio</div>
+        <h1>Hi, I'm <span>Shamshad Begum</span><br>Aspiring Software<br>Engineer.</h1>
+        <p class="hero-description">Computer Science student from Gangavati, Karnataka. Passionate about Python, modern web development, and building interactive, accessible web applications.</p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="resume.html">View My Resume <span>↗</span></a>
+          <a class="button button-ghost" href="biodata.html">Explore Bio-data</a>
+        </div>
+        <div class="hero-tech-strip">
+          <span class="hero-tech-label">Core Skills:</span>
+          <span class="tech-pill">HTML5</span>
+          <span class="tech-pill">CSS3</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">MySQL</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="showcase-card">
+          <div class="showcase-card-header">
+            <span>STUDENT PROFILE</span>
+            <span class="header-badge">B.E. CSE</span>
+          </div>
+          <div class="showcase-card-body">
+            <div class="showcase-avatar-row">
+              <div class="showcase-avatar">SB</div>
+              <div class="student-status-chip"><span class="status-dot"></span> Active Student</div>
+            </div>
+            <h3>Shamshad Begum</h3>
+            <span class="student-role">Computer Science &amp; Engineering</span>
+            <div class="showcase-meta-tags">
+              <span class="meta-chip">📍 Gangavati, KA</span>
+              <span class="meta-chip">🎓 Batch 2024–28</span>
+            </div>
+            <div class="showcase-info-list">
+              <div class="info-row"><span>PRIMARY FOCUS</span><strong>Full Stack &amp; Python</strong></div>
+              <div class="info-row"><span>MINI PROJECT</span><strong>Online Book Store</strong></div>
+              <div class="info-row"><span>CORE INTERESTS</span><strong>Web Apps &amp; DBMS</strong></div>
+            </div>
+            <div class="showcase-card-footer">
+              <span>Open to learning opportunities</span>
+              <a href="biodata.html">Bio-data ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container hero-bottom-strip">
+      <span>PORTFOLIO SECTIONS</span>
+      <div class="hero-nav-items">
+        <a href="resume.html">01 Curriculum Vitae ↗</a>
+        <a href="biodata.html">02 Personal Bio-data ↗</a>
+        <a href="#technologies">03 Tech Architecture ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="section-heading">
+      <div><p class="eyebrow">PORTFOLIO OVERVIEW</p><h2>Discover more <span>about me.</span></h2></div>
+      <p class="section-intro">This web portal highlights my engineering coursework, technical skills, and personal information in one organized format.</p>
+    </div>
+    <div class="cards-grid">
+      <article class="info-card resume-card">
+        <div class="card-icon">📄</div><span class="card-number">01</span>
+        <p class="card-label">ACADEMIC PROFILE</p><h3>Curriculum Vitae</h3>
+        <p>Review my career objective, educational milestones, technical abilities, college project and strengths.</p>
+        <a class="arrow-link" href="resume.html">View resume <span>↗</span></a>
+      </article>
+      <article class="info-card bio-card">
+        <div class="card-icon">👤</div><span class="card-number">02</span>
+        <p class="card-label">PERSONAL PROFILE</p><h3>Personal Bio-data</h3>
+        <p>Read my basic information, contact coordinates, native background, languages known and interests.</p>
+        <a class="arrow-link" href="biodata.html">View bio-data <span>↗</span></a>
+      </article>
+      <article class="info-card tech-card">
+        <div class="card-icon">⚙</div><span class="card-number">03</span>
+        <p class="card-label">WEB ARCHITECTURE</p><h3>Web Technologies</h3>
+        <p>A multi-page portfolio designed using clean semantic HTML5, custom CSS3, and JavaScript.</p>
+        <a class="arrow-link" href="#technologies">Explore tools <span>↗</span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="technology-section" id="technologies">
+    <div class="container tech-layout">
+      <div><p class="eyebrow">BUILT WITH</p><h2>Standard tools.<br><span>Clean architecture.</span></h2></div>
+      <div class="tech-list"><div><b>01</b><span>HTML5</span><small>Page structure</small></div><div><b>02</b><span>CSS3</span><small>Responsive styling</small></div><div><b>03</b><span>JavaScript</span><small>Interactive elements</small></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html">Personal<span class="brand-accent">Portfolio</span></a><p>Resume &amp; Bio-data Website · © <span id="year"></span></p><a href="#top" class="back-top">Back to top ↑</a></div></footer>
+<script src="./script.js"></script>
+</body>
+</html>
